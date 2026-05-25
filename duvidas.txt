@@ -1,6 +1,6 @@
 1- pq uso int para criar uma função? e não func, function def..
 2- para que serve o <<
-3-
+3-posso ter duas varaiveis co mo mesmo nome, mas tipos diferentes? tipo uma int e uma unsigned int???
 4-
 5-
 6-
