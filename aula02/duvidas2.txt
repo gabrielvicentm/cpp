@@ -1,0 +1,2 @@
+1- memory leak, oq significa na pratica, vai ficar consumindo ram pra sempr, é isso?consumindo
+2- oq é buffer?
