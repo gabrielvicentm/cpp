@@ -1,0 +1,10 @@
+1- pq uso int para criar uma função? e não func, function def..
+2- para que serve o <<
+3-
+4-
+5-
+6-
+7-
+8-
+9-
+10-
