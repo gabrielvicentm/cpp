@@ -1,0 +1,182 @@
+1. Por que uso int para criar uma funcao? Por que nao func, function, def?
+
+  Em C++, voce nao escreve uma palavra como function para declarar funcao. Voce comeca dizendo qual tipo a funcao retorna.
+
+  Exemplo:
+
+  int Somar(int a, int b)
+  {
+      return a + b;
+  }
+
+  Esse int antes de Somar significa:
+
+  > essa funcao retorna um valor do tipo int.
+
+  Outros exemplos:
+
+  float CalcularVelocidade()
+  {
+      return 600.0f;
+  }
+
+  bool EstaVivo(int vida)
+  {
+      return vida > 0;
+  }
+
+  void ImprimirMensagem()
+  {
+      std::cout << "Ola\n";
+  }
+
+  void significa: essa funcao nao retorna nada.
+
+  Entao a estrutura mental e:
+
+  tipo_de_retorno NomeDaFuncao(parametros)
+  {
+      corpo
+  }
+
+  ———
+
+  2. Para que serve o <<?
+
+  No caso de std::cout, o << serve para mandar dados para a saida do console.
+
+  std::cout << "Ola\n";
+
+  Leia assim:
+
+  > envie "Ola\n" para std::cout.
+
+  Pode encadear:
+
+  int vida = 100;
+
+  std::cout << "Vida: " << vida << "\n";
+
+  Isso envia tres coisas para o console:
+
+  1. "Vida: "
+  2. o valor de vida
+  3. quebra de linha "\n"
+
+  Importante: << tambem pode ter outros significados em C++, como operador de bit shift, mas por enquanto pense nele com std::cout como
+  “mandar para a saida”.
+
+  ———
+
+  3. Posso ter duas variaveis com o mesmo nome, mas tipos diferentes?
+
+  No mesmo escopo, nao.
+
+  Isso da erro:
+
+  int vida = 100;
+  unsigned int vida = 200; // erro
+
+  Mesmo sendo tipos diferentes, o nome vida ja existe naquele escopo.
+
+  Mas em escopos diferentes, pode:
+
+  int vida = 100;
+
+  if (true)
+  {
+      unsigned int vida = 200; // permitido, mas confuso
+      std::cout << vida << "\n"; // usa a vida de dentro
+  }
+
+  std::cout << vida << "\n"; // usa a vida de fora
+
+  Apesar de ser permitido, evite fazer isso enquanto aprende. Usar o mesmo nome em escopos diferentes pode confundir bastante.
+
+  ———
+
+  4. Existe unsigned para outros tipos alem de int?
+
+  Sim, para tipos inteiros.
+
+  Exemplos:
+
+  unsigned int a = 10;
+  unsigned short b = 20;
+  unsigned long c = 30;
+  unsigned long long d = 40;
+  unsigned char e = 255;
+
+  Tambem existem tipos de tamanho fixo:
+
+  #include <cstdint>
+
+  uint8_t pequeno = 255;
+  uint32_t moedas = 1000;
+  uint64_t experiencia = 999999;
+
+  Mas nao existe unsigned float ou unsigned double.
+
+  Esses aqui nao fazem sentido:
+
+  unsigned float x;  // erro
+  unsigned double y; // erro
+
+  unsigned e para inteiros, porque ele muda a faixa de valores: remove os negativos e aumenta o limite positivo.
+
+  ———
+
+  5. Sobre static_cast<float>(dano) / armadura: preciso converter os dois?
+
+  Sua duvida esta certa, mas o nome correto e static_cast, nao static_class.
+
+  Este exemplo:
+
+  float resultado2 = static_cast<float>(dano) / armadura;
+
+  ja funciona.
+
+  Por que? Porque quando um dos lados da divisao e float, o outro lado e convertido automaticamente para float naquela operacao.
+
+  Entao:
+
+  float resultado2 = static_cast<float>(dano) / armadura;
+
+  e suficiente.
+
+  Esse tambem funciona:
+
+  float resultado3 = static_cast<float>(dano) / static_cast<float>(armadura);
+
+  Mas e redundante. Voce nao precisa converter os dois.
+
+  Exemplo:
+
+  int dano = 7;
+  int armadura = 2;
+
+  float resultado1 = dano / armadura;
+  float resultado2 = static_cast<float>(dano) / armadura;
+  float resultado3 = static_cast<float>(dano) / static_cast<float>(armadura);
+
+  Resultados:
+
+  resultado1 = 3
+  resultado2 = 3.5
+  resultado3 = 3.5
+
+  O ponto principal:
+
+  dano / armadura
+
+  como os dois sao int, faz divisao inteira.
+
+  Mas:
+
+  static_cast<float>(dano) / armadura
+
+  vira divisao com float.
+
+  Regra pratica: para divisao decimal entre inteiros, converta pelo menos um dos lados para float ou double.
+
+  As perguntas 6 a 10 estavam vazias no arquivo. Quando preencher, posso responder na mesma linha de estudo.

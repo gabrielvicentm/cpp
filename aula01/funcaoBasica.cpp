@@ -1,6 +1,6 @@
 #include <iostream>
 
-int Multiplicar(int a, int b);
+int Multiplicar(int a, int b); // eu uso int no lugar de 'function' pq a função retorna um int
 
 int main()
 {
