@@ -1,4 +1,10 @@
-6-nullptr é equivalente ao 'nil' do golang?
+1- pq uso int para criar uma função? e não func, function def..
+2- para que serve o <<
+3-posso ter duas varaiveis co mo mesmo nome, mas tipos diferentes? tipo uma int e uma unsigned int???
+4-existe unsgined para outros tipos de variaveis que não sejam int??
+5- se eu usar o static_class em uma variavel ele usara para a outra tambem igual no resultado2?   float resultado2 = static_cast<float>(dano) / (armadura);
+    float resultado3 = static_cast<float>(dano) / static_cast<float>(armadura); // ou eu deveria fazer igual no resultado 3?
+6-
 7-
 8-
 9-
